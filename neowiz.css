@@ -210,9 +210,20 @@ header {
 #news .item:hover {
   background-size: 120% 120%;
 }
-#news .item:first-child {
+#news .item-first {
   width: 630px;
   height: 354px;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 #news .sub-content {
   font-size: 22px;
@@ -293,15 +304,17 @@ header {
   color: white;
   position: relative;
 }
-#games .swiper {
+#games .swiper a {
+  position: relative;
   width: 100%;
   left: 50%;
   color: #dcdee4;
   text-align: center;
   font-size: 16px;
   font-weight: 400;
+  cursor: pointer;
 }
-#games .swiper span:hover {
+#games .swiper a:hover {
   font-weight: 700;
   color: white;
 }
@@ -423,6 +436,7 @@ header {
   flex-direction: row;
   align-items: flex-start;
   gap: 10px;
+  cursor: pointer;
 }
 #careers .white {
   border: 0;
@@ -505,6 +519,7 @@ header {
   line-height: 19.09px;
   text-align: left;
   color: #dcdee4;
+  cursor: pointer;
 }
 #contact .right img {
   width: 100%;
@@ -644,12 +659,9 @@ footer .content-05 span {
   #news .content {
     flex-direction: column;
   }
-  #news .item:first-child {
-    width: 100%;
-    height: 375px;
-  }
+  #news .item-first,
   #news .item {
-    width: 100%;
+    width: 944px;
     height: 375px;
   }
   #news .title {
@@ -762,6 +774,13 @@ footer .content-05 span {
     font-size: 20px;
   }
 }
+@media screen and (max-width: 768px) {
+  #news .item-first,
+  #news .item {
+    width: 728px;
+    height: 375px;
+  }
+}
 @media screen and (max-width: 426px) {
   .innerHeader,
   #games .title,
@@ -800,6 +819,7 @@ footer .content-05 span {
   #news .date {
     font-size: 15px;
   }
+  #news .item-first,
   #news .item {
     width: 385px;
     height: 215px;
@@ -871,6 +891,7 @@ footer .content-05 span {
     width: 335px;
     height: 187px;
   }
+  #news .item-first,
   #news .item {
     width: 335px;
     height: 187px;
@@ -881,10 +902,7 @@ footer .content-05 span {
     width: 280px;
     height: 470px;
   }
-  #news .item:first-child {
-    width: 305px;
-    height: 170px;
-  }
+  #news .item-first,
   #news .item {
     width: 305px;
     height: 170px;
