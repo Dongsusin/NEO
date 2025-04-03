@@ -26,6 +26,10 @@ header {
   background-color: transparent;
   z-index: 1;
   top: 0;
+  transition: top 0.2s ease-in-out;
+}
+.nav-up {
+  top: -93px;
 }
 header.on,
 header:hover {
