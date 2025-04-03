@@ -536,6 +536,7 @@ header:hover {
     width: 100%;
     height: 250px;
     background-image: url(./image/main-contact1.png);
+    background-size: 100% 100%;
     animation: image 10s;
     animation-iteration-count: infinite;
   }
@@ -638,7 +639,7 @@ footer {
 }
 /*반응형*/
 @media screen and (max-width: 1440px) {
-  .innerHeader,
+  header .innerHeader,
   #games .title,
   #news .container,
   #careers .container,
@@ -650,7 +651,7 @@ footer {
   }
 }
 @media screen and (max-width: 1024px) {
-  .innerHeader,
+  header .innerHeader,
   #games .title,
   #news .container,
   #careers .container,
@@ -664,22 +665,22 @@ footer {
     height: 118px;
     line-height: 0;
   }
-  .innerHeader {
+  header .innerHeader {
     display: none;
   }
-  .mobileHeader {
+  header .mobileHeader {
     opacity: 1;
   }
-  .slideshow-container {
+  #visual .slideshow-container {
     top: 135px;
   }
-  .pc {
+  #visual .pc {
     display: none;
   }
-  .mobile {
+  #visual .mobile {
     display: block;
   }
-  .mySlides {
+  #visual .mySlides {
     width: 675px;
     height: 1125px;
   }
@@ -809,7 +810,7 @@ footer {
   }
 }
 @media screen and (max-width: 426px) {
-  .innerHeader,
+  header .innerHeader,
   #games .title,
   #news .container,
   #careers .container,
@@ -833,10 +834,10 @@ footer {
     height: 29px;
     width: 29px;
   }
-  .slideshow-container {
+  #visual .slideshow-container {
     top: 68px;
   }
-  .mySlides {
+  #visual .mySlides {
     width: 385px;
     height: 647px;
   }
@@ -910,7 +911,7 @@ footer {
   }
 }
 @media screen and (max-width: 376px) {
-  .mySlides {
+  #visual .mySlides {
     width: 335px;
     height: 562px;
   }
@@ -925,7 +926,7 @@ footer {
   }
 }
 @media screen and (max-width: 321px) {
-  .mySlides {
+  #visual .mySlides {
     width: 280px;
     height: 470px;
   }
@@ -939,8 +940,8 @@ footer {
     inline-size: 235px;
     overflow-wrap: break-word;
   }
-  .white,
-  .black {
+  #careers .white,
+  #careers .black {
     width: 100%;
     padding: 8px 31px;
     max-width: 135px;
