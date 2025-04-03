@@ -521,9 +521,23 @@ header {
   color: #dcdee4;
   cursor: pointer;
 }
-#contact .right img {
+#contact .right {
   width: 100%;
   height: 250px;
+  background-image: url(./image/contect1.png);
+  animation: image 10s;
+  animation-iteration-count: infinite; /*무한 반복 */
+}
+@keyframes image {
+  0% {
+    background-image: url(./image/contect1.png);
+  }
+  33% {
+    background-image: url(./image/img_map_02.png);
+  }
+  66% {
+    background-image: url(./image/img_map_03.png);
+  }
 }
 /*footer*/
 footer {
