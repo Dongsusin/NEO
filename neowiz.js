@@ -1,4 +1,4 @@
-//서브헤더더
+//서브헤더
 $(function () {
   let depth1 = $(".mainmenu .mainmenu_list > li ");
   let header = $("header");
@@ -11,13 +11,47 @@ $(function () {
       header.stop().animate({ height: "93px" });
     });
 });
-//슬라이더
+//헤더 색변경
+const header = document.querySelector("header");
+window.addEventListener("scroll", function () {
+  if (window.scrollY > 0) {
+    header.classList.add("on");
+  } else {
+    header.classList.remove("on");
+  }
+});
+//스크롤 헤더 반응형
+var didScroll;
+var lastScrollTop = 0;
+var delta = 5;
+var navbarHeight = $("header").outerHeight();
+$(window).scroll(function (event) {
+  didScroll = true;
+});
+setInterval(function () {
+  if (didScroll) {
+    hasScrolled();
+    didScroll = false;
+  }
+}, 250);
+function hasScrolled() {
+  var st = $(this).scrollTop();
+  if (Math.abs(lastScrollTop - st) <= delta) return;
+  if (st > lastScrollTop && st > navbarHeight) {
+    $("header").addClass("nav-up");
+  } else {
+    if (st + $(window).height() < $(document).height()) {
+      $("header").removeClass("nav-up");
+    }
+  }
+  lastScrollTop = st;
+}
+//visaul
 var slideIndex = 0;
 showSlides();
 function showSlides() {
   var i;
   var slides = document.getElementsByClassName("mySlides");
-
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
@@ -26,8 +60,7 @@ function showSlides() {
     slideIndex = 1;
   }
   slides[slideIndex - 1].style.display = "block";
-
-  setTimeout(showSlides, 2000); // 2초마다 이미지가 체인지됩니다
+  setTimeout(showSlides, 8000);
 }
 //games roller
 let roller = document.querySelector(".rolling-list");
@@ -40,35 +73,28 @@ document.querySelector("#roller2").style.left =
   document.querySelector(".rolling-list ul").offsetWidth + "px";
 roller.classList.add("original");
 clone.classList.add("clone");
-//포토폴리오 팝업
-// 쿠키 가져오기
+//pop up
 function getCookie(name) {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
   return parts.length === 2 ? parts.pop().split(";").shift() : null;
 }
-// 쿠키 설정하기
 function setCookie(name, value, days) {
   const date = new Date();
   date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
   document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
 }
-// 쿠키 삭제하기 (테스트용)
 function deleteCookie(name) {
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
-// 테스트용: 브라우저 콘솔에서 deletePopupCookie() 호출로 쿠키 삭제 가능
 window.deletePopupCookie = () => deleteCookie("hidePopup");
-// 페이지 로드 완료 후 실행
 document.addEventListener("DOMContentLoaded", function () {
-  // 이미 오늘 다시 보지 않기 설정이 되어 있다면 팝업을 띄우지 않음
   if (getCookie("hidePopup") !== "true") {
     const overlay = document.createElement("div");
     overlay.style = `
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background-color: rgba(0, 0, 0, 0.5); z-index: 999;
         `;
-
     const popup = document.createElement("div");
     popup.style = `
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -88,64 +114,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 오늘 다시 보지 않기
             </label>
         `;
-
     const closeButton = popup.querySelector("button");
     const noShowToday = popup.querySelector("#noShowToday");
 
     closeButton.addEventListener("click", () => {
       if (noShowToday.checked) {
-        setCookie("hidePopup", "true", 1); // 하루 동안 유지
+        setCookie("hidePopup", "true", 1);
       }
       overlay.remove();
       popup.remove();
     });
-
     document.body.append(overlay, popup);
   }
 });
-
-const header = document.querySelector("header");
-window.addEventListener("scroll", function () {
-  if (window.scrollY > 0) {
-    header.classList.add("on");
-  } else {
-    header.classList.remove("on");
-  }
-});
-
-var didScroll;
-var lastScrollTop = 0;
-var delta = 5;
-var navbarHeight = $("header").outerHeight();
-
-$(window).scroll(function (event) {
-  didScroll = true;
-});
-
-setInterval(function () {
-  if (didScroll) {
-    hasScrolled();
-    didScroll = false;
-  }
-}, 250);
-
-function hasScrolled() {
-  var st = $(this).scrollTop();
-
-  // Make sure they scroll more than delta
-  if (Math.abs(lastScrollTop - st) <= delta) return;
-
-  // If they scrolled down and are past the navbar, add class .nav-up.
-  // This is necessary so you never see what is "behind" the navbar.
-  if (st > lastScrollTop && st > navbarHeight) {
-    // Scroll Down
-    $("header").addClass("nav-up");
-  } else {
-    // Scroll Up
-    if (st + $(window).height() < $(document).height()) {
-      $("header").removeClass("nav-up");
-    }
-  }
-
-  lastScrollTop = st;
-}
