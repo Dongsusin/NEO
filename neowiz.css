@@ -23,18 +23,19 @@ header {
   overflow: hidden;
   /*높이가 120px로 정했기 때문에 서브메뉴는 보이지 않는다*/
   position: fixed;
+  background-color: transparent;
   z-index: 1;
   top: 0;
+}
+header.on,
+header:hover {
+  background-color: rgba(0, 0, 0, 0.75);
 }
 .innerHeader {
   width: 100%;
   padding: 0px 120px;
   display: flex;
-  background-color: rgb(50, 50, 50);
   opacity: 0.9;
-}
-.innerHeader:hover {
-  background-color: black;
 }
 .mainmenu {
   width: 100%;

@@ -103,3 +103,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.append(overlay, popup);
   }
 });
+
+const header = document.querySelector("header");
+window.addEventListener("scroll", function () {
+  if (window.scrollY > 0) {
+    header.classList.add("on");
+  } else {
+    header.classList.remove("on");
+  }
+});
